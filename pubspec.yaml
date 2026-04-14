@@ -43,6 +43,7 @@ dependencies:
   lottie: ^3.3.3
   drag_and_drop_lists: ^0.4.2
   shared_preferences: ^2.5.5
+  flutter_animate: ^4.5.2
 
 dev_dependencies:
   flutter_test:
