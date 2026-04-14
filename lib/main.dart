@@ -12,6 +12,9 @@ import 'data/models/task_model.dart';
 import 'data/models/session_model.dart';
 import 'data/models/streak_model.dart';
 
+// features
+import 'features/onboarding/screens/onboarding_screen.dart';
+
 void main() async {
   // Ensure Flutter bindings are initialized before doing async work
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +57,7 @@ class FokusApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Plus Jakarta Sans',
       ),
-      home: const Scaffold(body: Center(child: Text('Fokus MVP'))),
+      home: const OnboardingScreen(),
     );
   }
 }
