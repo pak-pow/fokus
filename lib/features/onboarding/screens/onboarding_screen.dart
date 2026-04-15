@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/onboarding_cubit.dart';
+
+// widgets
 import '../widgets/mirror_page.dart';
 import '../widgets/possibility_page.dart';
 import '../widgets/cost_page.dart';
+import '../widgets/promise_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -51,7 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 MirrorPage(),
                 CostPage(),
                 PossibilityPage(),
-                Center(child: Text("Screen 4: The Promise")),
+                PromisePage(),
                 Center(child: Text("Screen 5: The Seed")),
               ],
             );
