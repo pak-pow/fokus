@@ -7,6 +7,7 @@ import '../widgets/mirror_page.dart';
 import '../widgets/possibility_page.dart';
 import '../widgets/cost_page.dart';
 import '../widgets/promise_page.dart';
+import '../widgets/seed_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -55,7 +56,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 CostPage(),
                 PossibilityPage(),
                 PromisePage(),
-                Center(child: Text("Screen 5: The Seed")),
+                SeedPage(),
               ],
             );
           },
