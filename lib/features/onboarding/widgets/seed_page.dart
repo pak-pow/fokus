@@ -141,7 +141,7 @@ class _SeedPageState extends State<SeedPage> {
 
                         if (context.mounted) {
                           // Route to the main garden screen!
-                          context.go('/garden');
+                          context.go('/dashboard');
                         }
                       }
                     : null,

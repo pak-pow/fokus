@@ -59,6 +59,7 @@ void main() async {
 
 class FokusApp extends StatelessWidget {
   final GoRouter router;
+
   const FokusApp({super.key, required this.router});
 
   @override
@@ -68,6 +69,27 @@ class FokusApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
       routerConfig: router,
+      // Pass the custom class right here:
+      scrollBehavior: PremiumScrollBehavior(),
     );
+  }
+}
+
+class PremiumScrollBehavior extends ScrollBehavior {
+  @override
+  Widget buildOverscrollIndicator(
+    BuildContext context,
+    Widget child,
+    ScrollableDetails details,
+  ) {
+    // This is the ultimate kill-switch.
+    // It returns the list WITHOUT the Android stretch or glow wrapper.
+    return child;
+  }
+
+  @override
+  ScrollPhysics getScrollPhysics(BuildContext context) {
+    // Forces the premium iOS-style bounce everywhere
+    return const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics());
   }
 }
