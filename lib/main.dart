@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Domain Enums
 import 'domain/enums/plant_type.dart';
@@ -17,6 +19,10 @@ import 'features/onboarding/screens/onboarding_screen.dart';
 
 // Theme
 import 'app/theme.dart';
+
+// App Config
+import 'app/theme.dart';
+import 'app/router.dart';
 
 void main() async {
   // Ensure Flutter bindings are initialized before doing async work
@@ -41,20 +47,27 @@ void main() async {
   await Hive.openBox<PlantModel>('plants');
   await Hive.openBox<SessionModel>('sessions');
   await Hive.openBox<StreakModel>('streak');
+  final prefs = await SharedPreferences.getInstance();
+  final hasCompletedOnboarding =
+      prefs.getBool('hasCompletedOnboarding') ?? false;
 
-  runApp(const FokusApp());
+  // Initialize Router
+  final router = AppRouter.getRouter(hasCompletedOnboarding);
+
+  runApp(FokusApp(router: router));
 }
 
 class FokusApp extends StatelessWidget {
-  const FokusApp({super.key});
+  final GoRouter router;
+  const FokusApp({super.key, required this.router});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Fokus',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.darkTheme,
-      home: const OnboardingScreen(),
+      routerConfig: router,
     );
   }
 }

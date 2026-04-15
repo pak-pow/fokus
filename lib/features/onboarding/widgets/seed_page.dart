@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/onboarding_cubit.dart';
+import 'package:go_router/go_router.dart';
 
 class SeedPage extends StatefulWidget {
   const SeedPage({super.key});
@@ -133,15 +134,15 @@ class _SeedPageState extends State<SeedPage> {
               child: ElevatedButton.icon(
                 onPressed: _isTyping
                     ? () async {
-                        // TODO: Save this first task to the Hive database
-
-                        // Mark onboarding as complete
+                        // Mark onboarding as complete in SharedPreferences
                         await context
                             .read<OnboardingCubit>()
                             .completeOnboarding();
 
-                        // TODO: Navigate to the main Garden Dashboard
-                        print("Planted: ${_taskController.text}");
+                        if (context.mounted) {
+                          // Route to the main garden screen!
+                          context.go('/garden');
+                        }
                       }
                     : null,
                 icon: const Icon(Icons.auto_awesome),
