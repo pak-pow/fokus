@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/onboarding_cubit.dart';
 import '../widgets/mirror_page.dart';
+import '../widgets/possibility_page.dart';
+import '../widgets/cost_page.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -47,8 +49,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const NeverScrollableScrollPhysics(), // Forces the use of our custom buttons
               children: const [
                 MirrorPage(),
-                Center(child: Text("Screen 2: The Cost")),
-                Center(child: Text("Screen 3: The Possibility")),
+                CostPage(),
+                PossibilityPage(),
                 Center(child: Text("Screen 4: The Promise")),
                 Center(child: Text("Screen 5: The Seed")),
               ],

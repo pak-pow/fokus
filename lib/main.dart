@@ -15,6 +15,9 @@ import 'data/models/streak_model.dart';
 // features
 import 'features/onboarding/screens/onboarding_screen.dart';
 
+// Theme
+import 'app/theme.dart';
+
 void main() async {
   // Ensure Flutter bindings are initialized before doing async work
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,13 +53,7 @@ class FokusApp extends StatelessWidget {
     return MaterialApp(
       title: 'Fokus',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF2E5B32),
-        ), // Dark organic green
-        useMaterial3: true,
-        fontFamily: 'Plus Jakarta Sans',
-      ),
+      theme: AppTheme.darkTheme,
       home: const OnboardingScreen(),
     );
   }
